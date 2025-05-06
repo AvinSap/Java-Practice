@@ -8,6 +8,8 @@ public class SportCar extends Car {
     }
     public void activateTurboBoost(){
         super.accelerator();
+        this.turboBoost += 70;
+        super.speed += turboBoost;
         System.out.println("The Boost is Activated...");
     }
 
