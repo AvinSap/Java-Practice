@@ -1,10 +1,10 @@
-public class Drake extends Artists implements SpotifyController{
+public class RapArtist extends Artist implements SpotifyController {
     int noOfHits;
 
 
     @Override
     public void play() {
-        System.out.println("Now playing " + songName + " by " + nameOfArtist + " on Spotify.");
+        System.out.println("Now playing " + getSongName() + " by " + getNameOfArtist() + " on Spotify.");
     }
 
     @Override
@@ -24,12 +24,12 @@ public class Drake extends Artists implements SpotifyController{
 
     @Override
     void follow() {
-        System.out.println("You started following Drake");
+        System.out.println("You started following" + getNameOfArtist());
     }
 
     @Override
     public String getNameOfArtist() {
-        return " DRAKE ";
+        return " RAP ARTIST ";
     }
 
     @Override
@@ -45,5 +45,9 @@ public class Drake extends Artists implements SpotifyController{
     @Override
     public void reviewComment() {
         System.out.println("Totally Goated with: " + noOfHits);
+    }
+
+    public String setAlbumName() {
+        return "";
     }
 }

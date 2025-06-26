@@ -1,35 +1,39 @@
-abstract class Artists {
-    //COMMON ATTRIBUTES:
-    public String nameOfArtist;
-    public String songName;
+abstract class Artist {
+    // COMMON ATTRIBUTES
+    private String nameOfArtist;
+    private String songName;
     private String albumName;
     private int followers;
     private float monthlyListeners;
     private int rank;
 
-    //PARAMETERIZED CONSTRUCTOR:
-    Artists(String nameOfArtist, String songName,String albumName, int followers,float monthlyListeners,int rank){
+    // CONSTRUCTOR
+    public Artist(String nameOfArtist, String songName, String albumName, int followers, float monthlyListeners, int rank) {
         this.nameOfArtist = nameOfArtist;
         this.songName = songName;
         this.albumName = albumName;
-        this.followers = followers;
-        this.monthlyListeners = monthlyListeners;
+        this.followers = followers >= 0 ? followers : 0;
+        this.monthlyListeners = monthlyListeners >= 0.0f ? monthlyListeners : 0.0f;
         this.rank = rank;
     }
 
-    Artists() {
+    public Artist() {
     }
 
-    //METHODS:
+    // ABSTRACT METHODS
     abstract void follow();
     abstract void share();
-    void increase(int value){
+
+    // UTILITY METHODS
+    void increase(int value) {
         System.out.println("The volume is increased by: " + value);
     }
-    void decrease(int value){
-        System.out.println("The volume is decreased by:" + value );
+
+    void decrease(int value) {
+        System.out.println("The volume is decreased by: " + value);
     }
 
+    // GETTERS & SETTERS
     public String getNameOfArtist() {
         return nameOfArtist;
     }
@@ -59,7 +63,7 @@ abstract class Artists {
     }
 
     public void setFollowers(int followers) {
-        this.followers = followers;
+        this.followers = Math.max(0, followers);
     }
 
     public float getMonthlyListeners() {
@@ -67,7 +71,7 @@ abstract class Artists {
     }
 
     public void setMonthlyListeners(float monthlyListeners) {
-        this.monthlyListeners = monthlyListeners;
+        this.monthlyListeners = Math.max(0.0f, monthlyListeners);
     }
 
     public int getRank() {
@@ -76,5 +80,12 @@ abstract class Artists {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    // DEBUG UTILITY
+    @Override
+    public String toString() {
+        return "Artist: " + nameOfArtist + ", Song: " + songName + ", Album: " + albumName +
+                ", Followers: " + followers + ", Listeners: " + monthlyListeners + ", Rank: " + rank;
     }
 }

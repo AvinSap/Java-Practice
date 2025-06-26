@@ -1,19 +1,19 @@
-public class ChrisBrown extends Artists implements SpotifyController {
+public class PopArtist extends Artist implements SpotifyController {
     int noOfGrammys;
-
-    ChrisBrown(String nameOfArtist, String songName, String albumName, int followers, float monthlyListeners, int rank, int noOfGrammys) {
-        super(nameOfArtist, songName, albumName, followers, monthlyListeners, rank);
-        this.noOfGrammys = noOfGrammys;
-    }
 
     @Override
     public void play() {
-        System.out.println("Now playing " + songName + " by " +nameOfArtist +  " on Spotify");
+        System.out.println("Now playing " + getSongName() + " by " + getNameOfArtist() +  " on Spotify");
     }
 
     @Override
     public void pause() {
         System.out.println("The song is Paused!!!");
+    }
+
+    @Override
+    public String getNameOfArtist() {
+        return " POP ARTIST ";
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ChrisBrown extends Artists implements SpotifyController {
 
     @Override
     void follow() {
-        System.out.println("You started following Drake");
+        System.out.println("You started following "+ getNameOfArtist());
     }
 
     @Override
